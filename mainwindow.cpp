@@ -64,7 +64,7 @@ MainWindow::MainWindow()
     sceneSayfaNumber=0;
     sceneSayfaActiveNumber=0;
     sceneSayfa.append(_scene);
-       /*****************view ************************/
+           /*****************view ************************/
     //qDebug()<<"inital view property";
     view = new QGraphicsView(scene);
    // view->setRenderHints(QPainter::Antialiasing);
@@ -185,11 +185,18 @@ MainWindow::MainWindow()
  buttonColorClear();
  kalemButtonClick();///önemli
  timerGizleSlot();///önemli
-// ileriGeriSayfa();
+
+ //ileriGeriSayfa();
  ekranButtonClick();///önemli
 
  drawingMain = false;
  img.fill(qRgba(0, 0, 0, 0));
+ ekliSayfa++;
+ ekleSayfaButtonClick(sceneSayfaActiveNumber,false,-1);
+ ekliSayfa--;
+ silSayfaButtonClick();
+ ekranButtonClick();///önemli
+
 
 
 }
@@ -442,15 +449,12 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         drawLineTo(event->pos());
         wpoints.clear();
         drawingMain = false;
-
-       if (msx>event->pos().x()) msx=event->pos().x();
-        if(msy>event->pos().y()) msy=event->pos().y();
-        if(mex<event->pos().x()) mex=event->pos().x();
-        if(mey<event->pos().y()) mey=event->pos().y();
+        msx=(msx>event->pos().x()?event->pos().x():msx);
+        msy=(msy>event->pos().y()?event->pos().y():msy);
+        mex=(mex<event->pos().x()?event->pos().x():mex);
+        mey=(mey<event->pos().y()?event->pos().y():mey);
         if(mex<msx){int xtmp=msx;msx=mex;mex=xtmp;}
         if(mey<msy){int ytmp=msy;msy=mey;mey=ytmp;}
-
-
         msx=msx-(myPenSize/2)-2;
         msy=msy-(myPenSize/2)-2;
         mex=mex+(myPenSize/2)+2;

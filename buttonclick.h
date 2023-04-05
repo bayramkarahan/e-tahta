@@ -810,7 +810,7 @@ void MainWindow::ekleSayfaButtonClick(int inserIndex,bool pdfObjectAdded,int pdf
         _screenbtn->setAutoFillBackground(true);
         /**************pdf loader page**** çok önemli***********/
            if(scene->pdfObjectAdded&&scene->pdfObjectShow==false&&scene->pdfPageNumber<=pdfPageCount-1) pdfLoaderPage(scene->pdfPageNumber);///pdf page loader
- currentScreenModeSlot();
+    currentScreenModeSlot();
         /************************************************/
     });
     /*****************Sayfa Eklenince mutlaka Çalışmalı*****************************/
