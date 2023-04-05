@@ -60,7 +60,7 @@ icon.files = icons/e-tahta.png
 icon.path = /usr/share/e-tahta/
 
 config_file.files = e-tahta.ini
-config_file.path = /usr/share/e-tahta/e-tahta.ini
+config_file.path = /usr/share/e-tahta/
 
 auto_start.files = e-tahta-autostart.desktop
 auto_start.path = /etc/xdg/autostart/
