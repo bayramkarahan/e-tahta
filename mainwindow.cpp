@@ -450,18 +450,18 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         if(mex<msx){int xtmp=msx;msx=mex;mex=xtmp;}
         if(mey<msy){int ytmp=msy;msy=mey;mey=ytmp;}
 
+
         msx=msx-(myPenSize/2)-2;
         msy=msy-(myPenSize/2)-2;
         mex=mex+(myPenSize/2)+2;
         mey=mey+(myPenSize/2)+2;
-
+        startPoint=QPointF(msx,msy);
       //  qDebug()<<"sayfa sayısı:"<<sceneSayfaNumber;
       //      startPoint=QPointF(msx,msy);
     /*    if(sceneSayfaNumber>0)
             startPoint=QPointF(msx,msy);
        else
-    */         startPoint=QPointF(msx-0.5,msy-0.5);
-
+    */
 
         /*qDebug()<<"resim oluşturulsu"<<myPenSize;
          QPixmap pix1(qFabs(msx-mex), qFabs(msy-mey));
