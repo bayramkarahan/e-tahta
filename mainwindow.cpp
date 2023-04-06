@@ -126,7 +126,7 @@ MainWindow::MainWindow()
     palette->setColor(QPalette::Background, QColor(240,240,240,250));
     buyukKutu->setPalette(*palette);
     buyukKutu->setAutoFillBackground(true);
-    setWindowTitle("E-Tahta 1.8.1");
+    setWindowTitle("E-Tahta 1.8.8");
 /***********************************/
     kokLayot=new QVBoxLayout();
     kokLayot->setContentsMargins(0,0,0,0);
@@ -264,7 +264,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     if(penWriteStatus)
     {
         if ((event->buttons() & Qt::LeftButton) && drawingMain==true) {
-
+        //qDebug()<<"mouse move";
         /*if (msx>event->pos().x()) msx=event->pos().x();
         if(msy>event->pos().y()) msy=event->pos().y();
         if(mex<event->pos().x()) mex=event->pos().x();
@@ -314,7 +314,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 
     if ((event->buttons() & Qt::LeftButton)&& tasi==true) {
-       qDebug()<<"move main press";
+      // qDebug()<<"move main press";
         buyukKutu->setGeometry(QRect(event->pos().x(),kutuTop,kutuWidth,kutuHeight));
         kutuLeft=event->pos().x();
        /// kutuTop=50;
