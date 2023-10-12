@@ -2,8 +2,6 @@ TARGET = e-tahta
 TEMPLATE = app
 CONFIG += c++11
 
-
-
 INCLUDEPATH += \
                 /usr/include/opencv4
                 /usr/include

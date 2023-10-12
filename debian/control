@@ -3,22 +3,12 @@ Section: utils
 Priority: optional
 Maintainer: Bayram KARAHAN <bayramk@gmail.com>
 Build-Depends: debhelper (>= 9), 
-    libc6,
-    libgcc1,
-    libgcc-12-dev,
-    libgl1-mesa-glx | libgl1,
-    libqt5core5a,
-    libqt5gui5,
-    libqt5network5,
-    libqt5qml5,
-    libqt5quick5,
-    libqt5svg5-dev,
-    libqt5widgets5,
-    libstdc++6,
     qtdeclarative5-dev,
     libpoppler-qt5-dev,
-    libopencv-core-dev,
-    libopencv-highgui-dev
+     libopencv-core-dev,
+     libopencv-imgproc-dev,
+     libopencv-imgcodecs-dev,
+     libopencv-highgui-dev
 Standards-Version: 3.9.8
 Homepage: http://pardus.org.tr
 
@@ -28,9 +18,11 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
      libqt5widgets5,
      libqt5gui5,
      libqt5core5a,
+     libqt5network5,
      libqt5printsupport5,
-     libpoppler-qt5-dev,
-     xdotool,
-     libopencv-core-dev,
-     libopencv-highgui-dev
+     libpoppler-qt5-1,
+     libopencv-core406,
+     libopencv-imgcodecs406,
+     libopencv-imgproc406,
+     libopencv-highgui406
 Description: E-Tahta Uygulaması
