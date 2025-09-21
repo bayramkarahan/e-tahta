@@ -1,0 +1,11 @@
+#!/bin/sh
+for item in $(ls /home)
+do
+#echo $item
+cp /usr/share/e-tahta/e-tahta.ini /home/$item/
+chmod 777 /home/$item/e-tahta.ini
+     chown $item:$item /home/$item/e-tahta.ini
+done
+
+exit 0
+#copy files to user home

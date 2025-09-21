@@ -1,0 +1,10 @@
+Package: e-tahta
+Version: 1.8.8
+Architecture: amd64
+Maintainer: Bayram KARAHAN <bayramk@gmail.com>
+Installed-Size: 1976
+Depends: libopencv-core406 | libopencv-core408 | libopencv-core410 | libopencv-core412 | libopencv-core414, libopencv-imgcodecs406 | libopencv-imgcodecs408 | libopencv-imgcodecs410 | libopencv-imgcodecs412 | libopencv-imgcodecs414, libopencv-imgproc406 | libopencv-imgproc408 | libopencv-imgproc410 | libopencv-imgproc412 | libopencv-imgproc414, libopencv-highgui406 | libopencv-highgui408 | libopencv-highgui410 | libopencv-highgui412 | libopencv-highgui414, libqt5widgets5, libqt5gui5, libqt5core5a, libqt5network5, libqt5printsupport5, libpoppler-qt5-1
+Section: utils
+Priority: optional
+Homepage: http://pardus.org.tr
+Description: E-Tahta Uygulaması

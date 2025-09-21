@@ -1,0 +1,6 @@
+#bayram KARAHAN bayramk@gmail.com
+
+[Desktop Entry]
+Exec=sh /usr/bin/e-tahtaxdglink.sh
+Type=Application
+Name[tr_TR.UTF-8]=e-tahta-autostart.desktop
