@@ -4,9 +4,9 @@ Version: 1.8.8
 Auto-Built-Package: debug-symbols
 Architecture: amd64
 Maintainer: Bayram KARAHAN <bayramk@gmail.com>
-Installed-Size: 101
+Installed-Size: 4458
 Depends: e-tahta (= 1.8.8)
 Section: debug
 Priority: optional
 Description: debug symbols for e-tahta
-Build-Ids: 2584ca45d6ee7fc45d9a4025cebbb0fd63994182
+Build-Ids: 5f39974ce414fb5195da3113faa24bf7f70d2aed
