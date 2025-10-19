@@ -34,7 +34,7 @@
 #include<poppler/qt5/poppler-qt5.h>
 #include <QMovie>
 #include <QThread>
-
+#include<diagramtextitem.h>
 
 class QButtonGroup;
 class QAbstractButton;
@@ -82,7 +82,7 @@ public:
 public slots:
 
 private slots:
-
+    void promterCloseSignalSlot(QString text);
     void pageButtonClick(int index);
      QMenu* colorMenu(QString colorType);
     void pdfLoaderPage(int pageIndex);

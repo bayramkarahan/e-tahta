@@ -80,5 +80,7 @@
         <file>icons/zoompozitif.png</file>
         <file>icons/loading.gif</file>
         <file>icons/fitwindow.png</file>
+        <file>icons/text.png</file>
+        <file>icons/exit.svg</file>
     </qresource>
 </RCC>

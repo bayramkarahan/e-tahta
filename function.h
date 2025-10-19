@@ -22,6 +22,67 @@
 #define FUNCTION_H
 #include<mainwindow.h>
 #include<QMessageBox>
+
+ void MainWindow::promterCloseSignalSlot(QString text)
+{
+
+     //qDebug()<<text;
+    this->show();
+     zeminBeyazButtonClick();///burada zemin beyaz yapılıyor
+    // View boyutu
+    QSize viewSize = view->viewport()->size();
+    currentScreenModeSlot();
+    //Scene::Mode tempMode=currentScreenMode;
+    scene->setMode(Scene::Mode::SelectObject, DiagramItem::DiagramType::NoType);
+    //scene->setMode(tempMode,mySekilType);
+    secButtonClick();
+    DiagramTextItem* itemToTextDraw = new DiagramTextItem(nullptr);
+    itemToTextDraw->setPlainText(text);
+    itemToTextDraw->myTextColor=scene->myPenColor;
+    itemToTextDraw->myBackgroundColor=scene->mySekilZeminColor;
+    itemToTextDraw->setDefaultTextColor(scene->myPenColor);
+    // Yazı düzenlemeyi etkinleştir
+    // Seçilebilir ve odaklanabilir
+    itemToTextDraw->setFlag(QGraphicsItem::ItemIsSelectable);
+    itemToTextDraw->setFlag(QGraphicsItem::ItemIsFocusable);// 🔹 Odak alabilir
+    itemToTextDraw->setTextInteractionFlags(Qt::TextEditorInteraction);
+
+    itemToTextDraw->setFocus();                              // 🔹 Hemen odak ver
+    // Varsayılan olarak seçili yap
+    itemToTextDraw->setSelected(true);
+    scene->graphicsList.append(itemToTextDraw);
+    itemToTextDraw->setZValue(1000.0);
+    scene->graphicsListTemp.append(itemToTextDraw);
+    scene->graphicsListpoints.append(itemToTextDraw);
+
+    // Fontu ayarla
+    QFont font;
+    font.setPointSize(myPenSize*6);
+    itemToTextDraw->setFont(font);
+
+    // Sahneye ekle
+    scene->addItem(itemToTextDraw);
+
+    // Yazıyı ekranın ortasına konumlandır
+    QRectF textRect = itemToTextDraw->boundingRect();
+    if(textRect.width()<10)
+    {
+    itemToTextDraw->setPos(
+        (viewSize.width())  / 2,
+        (viewSize.height()) / 2
+        );
+    }
+    else
+    {
+        itemToTextDraw->setPos(
+            (viewSize.width()  - textRect.width())  / 2,
+            (viewSize.height() - textRect.height()) / 2
+            );
+    }
+   // qDebug()<<textRect.width()<<textRect.height();
+    view->setFocusPolicy(Qt::StrongFocus);
+    view->setFocus();
+ }
 void MainWindow::timerGizleSlot()
 {
     gizleGoster=true;
@@ -63,7 +124,7 @@ void MainWindow::initPen()
     en=boy;
    // boy=40;
     //en=40;
-    kutuHeight=boy*17.0;
+    kutuHeight=boy*18.0;
     kutuWidth=en*1;
 
      myZeminType=0;

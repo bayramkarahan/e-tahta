@@ -78,8 +78,8 @@ public:
     enum Mode {NoMode, SelectObject, DrawLine,DrawPen,DrawPenFosfor,DrawRectangle,DrawEllipse,
                ScreenMode,TransparanMode,WhiteBoardMode,BlackBoardMode,MoveMode,
               CloseBoardMode,EraseMode,ClearMode,SaveBoardMode,OpenBoardMode,
-              IleriAlMode,GeriAlMode,CopyMode};
-    enum ModeTrue {DrawPenTrue,DrawPenFosforTrue,DrawLineTrue,CopyModeTrue,DrawRectangleTrue,EraseModeTrue,SelectObjectTrue,NoModeTrue};
+              IleriAlMode,GeriAlMode,CopyMode,TextMode};
+    enum ModeTrue {DrawPenTrue,DrawPenFosforTrue,DrawLineTrue,CopyModeTrue,DrawRectangleTrue,EraseModeTrue,SelectObjectTrue,NoModeTrue,TextModeTrue};
     Scene(QObject* parent = 0);
     void setMode(Mode mode, DiagramItem::DiagramType sekil);
     //void setPen(QColor _myPencolor, int _alpha, int _myPenSize);

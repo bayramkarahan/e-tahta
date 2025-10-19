@@ -349,6 +349,9 @@ if(tv->centerPoint==false)
        break;
    }
    case DrawPenFosforTrue:{
+
+         //  QGraphicsTextItem*  textDraw = new QGraphicsTextItem();
+       //textDraw->setPlainText();
        QGraphicsLineItem*  itemToPenDraw = new QGraphicsLineItem();
        this->addItem(itemToPenDraw);
        itemToPenDraw->setPen(QPen(myPenColor,myPenSize, myPenStyle, Qt::RoundCap ,Qt::RoundJoin));

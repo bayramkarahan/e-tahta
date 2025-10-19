@@ -22,8 +22,9 @@
 #define KALEMLAYOUT_H
 //#include<mainwindow.h>
 #include<diagramitem.h>
-
+#include<QPushButton>
 #include<QDateTime>
+#include<toolpromter.h>
 void MainWindow::kalemLayout()
 {
 
@@ -166,8 +167,8 @@ silButton->setIconSize(QSize(en*cc*0.7,boy*b));
 silPopButton->setFixedSize(en*c/2, boy*b);
 silPopButton->setIconSize(QSize(en*cc*0.7,boy*b));
 
-layout->addWidget(silButton, 15,0,1,1);
-layout->addWidget(silPopButton, 15,1,1,1);
+layout->addWidget(silButton, 18,0,1,1);
+layout->addWidget(silPopButton, 18,1,1,1);
 QMenu *silMenus=eraseMenu();
 silMenus->show();silMenus->hide();
 
@@ -217,6 +218,39 @@ connect(sekilPopButton, &QPushButton::clicked, [=]() {
      //qDebug()<<"sssss";
     sekilMenus->exec(mapToGlobal(sekilPopButton->pos() + QPoint(kutuLeft-sekilMenus->width()-kutuWidth/2,kutuTop+boy/2)));
     scene->setPopMenuStatus(false);
+
+});
+
+QPushButton *textButton = new QPushButton(this);
+textButton->setIcon(QIcon(":/icons/text.png"));
+textButton->setFixedSize(en*c, boy*b);
+textButton->setIconSize(QSize(en*c,boy*b*0.75));
+textButton->setFlat(true);
+//connect(textButton,SIGNAL(clicked()),this,SLOT(screenClickButtonClick()));
+
+layout->addWidget(textButton, 15,0,1,2);
+connect(textButton, &QPushButton::clicked, [=]() {
+
+    // View boyutu
+    QSize viewSize = view->viewport()->size();
+
+    /*view->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    view->setAttribute(Qt::WA_TranslucentBackground);
+    view->setFocusPolicy(Qt::StrongFocus);
+    view->setFocus();*/
+
+    toolPromter *promter=new toolPromter(viewSize.width()*0.90,viewSize.height());
+    connect(promter, SIGNAL(promterCloseSignal(QString)),
+            this, SLOT(promterCloseSignalSlot(QString)));
+
+    promter->move(viewSize.width()/2-promter->width()/2,viewSize.width()/4-promter->height()/2);
+    Qt::WindowFlags flags = 0;
+    flags |= Qt::FramelessWindowHint;
+    //flags |= Qt::X11BypassWindowManagerHint;
+    promter->setWindowFlags(flags);
+    promter->show();
+    this->hide();
+   // return;
 
 });
 /**********************************/

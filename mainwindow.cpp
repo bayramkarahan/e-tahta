@@ -67,7 +67,7 @@ MainWindow::MainWindow()
            /*****************view ************************/
     //qDebug()<<"inital view property";
     view = new QGraphicsView(scene);
-   // view->setRenderHints(QPainter::Antialiasing);
+    view->setRenderHints(QPainter::Antialiasing);
     //QGraphicsView view(&scene);
      view->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
 
@@ -87,7 +87,7 @@ MainWindow::MainWindow()
 
     setWindowFlags(Qt::FramelessWindowHint);
     setWindowFlags(Qt::WindowStaysOnTopHint);
-    setWindowFlags(Qt::X11BypassWindowManagerHint);
+   // setWindowFlags(Qt::X11BypassWindowManagerHint);
 
     setAttribute(Qt::WA_StaticContents);
     setAttribute(Qt::WA_TranslucentBackground, true);

@@ -23,21 +23,25 @@ QT += network
 
 
 SOURCES += \
+    diagramtextitem.cpp \
     mainwindow.cpp \
     main.cpp \
     gridlines.cpp \
     scene.cpp \
     dotsignal.cpp \
+    toolpromter.cpp \
     verectangle.cpp \
     depo.cpp \
     singleinstance.cpp
 
 HEADERS += \
+    diagramtextitem.h \
     mainwindow.h \
     gridlines.h \
     diagramitem.h \
     scene.h \
     dotsignal.h \
+    toolpromter.h \
     verectangle.h \
     function.h \
     buttonclick.h \
