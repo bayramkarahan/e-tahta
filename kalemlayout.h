@@ -25,6 +25,8 @@
 #include<QPushButton>
 #include<QDateTime>
 #include<toolpromter.h>
+
+
 void MainWindow::kalemLayout()
 {
 
@@ -233,12 +235,6 @@ connect(textButton, &QPushButton::clicked, [=]() {
 
     // View boyutu
     QSize viewSize = view->viewport()->size();
-
-    /*view->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-    view->setAttribute(Qt::WA_TranslucentBackground);
-    view->setFocusPolicy(Qt::StrongFocus);
-    view->setFocus();*/
-
     toolPromter *promter=new toolPromter(viewSize.width()*0.90,viewSize.height());
     connect(promter, SIGNAL(promterCloseSignal(QString)),
             this, SLOT(promterCloseSignalSlot(QString)));

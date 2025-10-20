@@ -87,12 +87,13 @@ MainWindow::MainWindow()
 
     setWindowFlags(Qt::FramelessWindowHint);
     setWindowFlags(Qt::WindowStaysOnTopHint);
-   // setWindowFlags(Qt::X11BypassWindowManagerHint);
+    setWindowFlags(Qt::X11BypassWindowManagerHint);
 
-    setAttribute(Qt::WA_StaticContents);
+   setAttribute(Qt::WA_StaticContents);
     setAttribute(Qt::WA_TranslucentBackground, true);
     setWindowIcon(QIcon(":icons/screenpen.png"));
-      /*****************************************/
+
+    /*****************************************/
 
     saat = new QTimer(this);
     connect(saat, SIGNAL(timeout()), this, SLOT(saatslot()));

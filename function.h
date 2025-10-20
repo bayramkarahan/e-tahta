@@ -28,7 +28,7 @@
 
      //qDebug()<<text;
     this->show();
-     zeminBeyazButtonClick();///burada zemin beyaz yapılıyor
+    // zeminBeyazButtonClick();///burada zemin beyaz yapılıyor
     // View boyutu
     QSize viewSize = view->viewport()->size();
     currentScreenModeSlot();
