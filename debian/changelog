@@ -1,5 +1,11 @@
+e-tahta (1.9.0) unstable; urgency=medium
+
+  * INI file path changed
+  
+  
 e-tahta (1.8.9) unstable; urgency=medium
 
-  * Initial Release
+  * Text insertion tool added
+
 
  -- Bayram KARAHAN <bayramk@gmail.com>  Sun, 27 Dec 2020 14:31:08 +0300

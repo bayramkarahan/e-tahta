@@ -61,9 +61,6 @@ desktop_file.path = /usr/share/applications/
 icon.files = icons/e-tahta.png
 icon.path = /usr/share/e-tahta/
 
-config_file.files = e-tahta.ini
-config_file.path = /usr/share/e-tahta/
-
 auto_start.files = e-tahta-autostart.desktop
 auto_start.path = /etc/xdg/autostart/
 
@@ -71,7 +68,7 @@ desktopfile.files = e-tahtaxdglink.sh
 desktopfile.path = /usr/bin/
 
 
-INSTALLS += target desktop_file icon config_file auto_start desktopfile
+INSTALLS += target desktop_file icon auto_start desktopfile
 #INSTALLS += libopencvimgcodecs libopencvcore libopencvhighgui libopencvimgproc
 DISTFILES += \
     icons/e-tahta.png \

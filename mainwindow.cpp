@@ -43,17 +43,6 @@ class QPixmap;
 MainWindow::MainWindow()
 {
 
-    QStringList args1;
-    QProcess p1;
-    args1 << "-e" << "eta-disable-gestures@pardus.org.tr";
-    p1.execute("gnome-shell-extension-tool", args1);
-
-    QStringList args2;
-    QProcess p2;
-    args2 << "set" << "org.gnome.mutter" << "overlay-key" << "''";
-    p2.execute("gsettings", args2);
-
-
     /*****************Scene******************************/
     //qDebug()<<"inital scene property";
     scene = new Scene();
@@ -118,7 +107,7 @@ MainWindow::MainWindow()
     buyukKutu->setStyleSheet("QWidget#buyukKutu{"
                           "border: 1px solid rgb(62, 140, 183);"
                           "border-radius: 5px;"
-                          "background-color:rgb(240,240,240,250);"
+                          "background-color:rgba(240,240,240,250);"
                           "}");
 
 //setStyleSheet("QLabel{color: rgb(62, 140, 183);}");
@@ -127,7 +116,7 @@ MainWindow::MainWindow()
     palette->setColor(QPalette::Background, QColor(240,240,240,250));
     buyukKutu->setPalette(*palette);
     buyukKutu->setAutoFillBackground(true);
-    setWindowTitle("E-Tahta 1.8.8");
+    setWindowTitle("E-Tahta 1.9.0");
 /***********************************/
     kokLayot=new QVBoxLayout();
     kokLayot->setContentsMargins(0,0,0,0);
@@ -151,9 +140,9 @@ MainWindow::MainWindow()
     pageListwg->setObjectName("pageListwg");
 
     pageListwg->setStyleSheet("QWidget#pageListwg{"
-                          "border: 0.5px solid rgb(62, 140, 220,20);"
+                          "border: 0.5px solid rgba(62, 140, 220,20);"
                           "border-radius: 5px;"
-                          "background-color:rgb(255,255,255,0);"
+                          "background-color:rgba(255,255,255,0);"
                           "}");
 
     screenlayout = new QHBoxLayout(pageListwg);
@@ -168,7 +157,7 @@ MainWindow::MainWindow()
  wsol->move(0,0);
  wsol->setStyleSheet("QWidget {"
                      "background-color:rgb(240,240,240);"
-                  //   "border: 0.5px solid rgb(62, 140, 220,20);"
+                  //   "border: 0.5px solid rgba(62, 140, 220,20);"
                      "}");
  wsol->setStyleSheet("background:rgb(56,56,56);");
  wsol->lower();
@@ -366,85 +355,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton && drawingMain&&penWriteStatus) {
         wpoints<<event->pos();
 
-       /* QPainterPath path;
-        path.moveTo(wpoints.at(0));
-        for(int i=0;i<wpoints.size()-2;i=i+1)
-        {
-        path.cubicTo(wpoints.at(i), wpoints.at(i+1), wpoints.at(i+2));
-        //path.CurveToElemenwpoints.at(i));
-          //  path.lineTo(wpoints.at(i));
-        }
-        scene->addPath(path,QPen(QColor(255,0,0,255), 5,Qt::SolidLine,Qt::RoundCap ,Qt::RoundJoin));
-       // wpoints.clear();
-       /*************************************Denenecek*************************************************/
-          /*    int n=wpoints.length()-1;
-           for(double u = 0.0 ; u <= 1.0 ; u += 0.01)
-            {
-                //calculate x coordinate
-                double xu=0.0;
-                for (int i = n; i >= 0; i--) {
-                    xu+=wpoints[i].x()*((factorial(n)/(factorial(i)*factorial((n-i))))*pow(u,i)*pow((1-u),(n-i)));
-                  }
-
-               //calculate y coordinate
-               double yu=0.0;
-                for (int i = n; i >= 0; i--) {
-                    yu+=wpoints[i].y()*((factorial(n)/(factorial(i)*factorial((n-i))))*pow(u,i)*pow((1-u),(n-i)));
-                }
-               /// drawLineTo(QPoint((int)xu , (int)yu));
-              //  path.lineTo((int)xu , (int)yu);
-               // path.cubicTo(QPoint((int)xu , (int)yu), QPoint((int)xu , (int)yu), QPoint((int)xu , (int)yu));
-                img.setPixel((int)xu , (int)yu , qRgb(0,255, 0));
-             //   setPixmap(QPixmap::fromImage(res));//set image to label
-            }
-           //pen=QPen(myPenColor, myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin);
-///
-         scene->addPath(path,QPen(QColor(255,0,0,255), myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin));
-          //   wpoints.clear();
-        /************************************************************************************/
-       // https://stackoverflow.com/questions/40764011/how-to-draw-a-smooth-curved-line-that-goes-through-several-points-in-qt
-    /*    float factor=10;
-        QList<QPointF> points;
-           QPointF p;
-           for (int i = 0; i < wpoints.size() - 1; i++) {
-               p = QPointF(wpoints[i].x(), wpoints[i].y());
-
-               // Except for first and last points, check what the distance between two
-               // points is and if its less then min, don't add them to the list.
-               if (points.count() > 1 && (i <wpoints.size() - 2) && (distance(points.last(), p) < factor)) {
-                   continue;
-               }
-               points.append(p);
-           }
-
-           // Don't proceed if we only have 3 or less points.
-           if (points.count() < 3) {
-               return;
-           }
-
-           QPointF pt1;
-           QPointF pt2;
-           QPainterPath path1;//= new QPainterPath();
-           for (int i = 0; i < points.count() - 1; i++) {
-               pt1 = getLineStart(points[i], points[i + 1]);
-               if (i == 0) {
-                   path1.moveTo(pt1);
-               } else {
-                   path1.quadTo(points[i], pt1);
-               }
-               pt2 = getLineEnd(points[i], points[i + 1]);
-               path1.lineTo(pt2);
-           }
-
-          // delete mPath;
-          // path.clear();
-          // path = path1;
-        ///   prepareGeometryChange();
-           pen=QPen(myPenColor, myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin);
-
-     //    scene->addPath(path1,QPen(QColor(0,255,0,255), myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin));
-         /// path1.clear();
-
        /*************************************************************************************/
        // lastPoint=event->pos();
         drawLineTo(event->pos());
@@ -461,23 +371,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         mex=mex+(myPenSize/2)+2;
         mey=mey+(myPenSize/2)+2;
         startPoint=QPointF(msx,msy);
-      //  qDebug()<<"sayfa sayısı:"<<sceneSayfaNumber;
-      //      startPoint=QPointF(msx,msy);
-    /*    if(sceneSayfaNumber>0)
-            startPoint=QPointF(msx,msy);
-       else
-    */
 
-        /*qDebug()<<"resim oluşturulsu"<<myPenSize;
-         QPixmap pix1(qFabs(msx-mex), qFabs(msy-mey));
-         pix1.fill(Qt::transparent);
-         QPainter painter(&pix1);
-         painter.setRenderHint(QPainter::Antialiasing, true);
-         painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-        painter.setWindow(QRect(msx, msy,qFabs(msx-mex), qFabs(msy-mey)));
-         painter.setPen(pen);
-         painter.strokePath(path1,pen);
-*/
          VERectangle*  itemToRectDraw = new VERectangle(scene);
         itemToRectDraw->sekilTur(DiagramItem::DiagramType::Kalem);
         //itemToRectDraw->sekilTur(DiagramItem::DiagramType::Resim);
@@ -580,77 +474,19 @@ void MainWindow::drawLineTo(const QPoint &endPoint)
    QPointF pt1;
     QPointF pt2;
     QPainterPath path1;//= new QPainterPath();
-    //painter.setRenderHint(QPainter::Antialiasing, true);
-    //painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-   /* for (int i = 0; i < wpoints.count() - 1; i++) {
-        pt1 = getLineStart(wpoints[i], wpoints[i + 1]);
-        if (i == 0) {
-            path1.moveTo(pt1);
-        } else {
-            path1.quadTo(wpoints[i-1], pt1);
-        }
-        pt2 = getLineEnd(wpoints[i], wpoints[i + 1]);
-        path1.lineTo(pt2);
-    }
-    painter.drawPath(path1);
-*/
+
    painter.drawLine(lastPoint, endPoint);
 
     int rad = (myPenSize / 2) + 2;
     update(QRect(lastPoint, endPoint).normalized()
            .adjusted(-rad, -rad, +rad, +rad));
     lastPoint = endPoint;
-  /*  pen=QPen(QColor(0,0,255,255), myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin);
-       rad = (myPenSize / 2)+2;
-
-    QPainter painter(&img);
-    painter.setPen(pen);
-    // painter.setRenderHints(QPainter::Antialiasing|QPainter::SmoothPixmapTransform);
-   //  painter.setRenderHint(QPainter::HighQualityAntialiasing);
-   // painter.setRenderHint(QPainter::Qt4CompatiblePainting);
-    // painter.setRenderHint(QPainter::NonCosmeticDefaultPen);
-  //  painter.setRenderHint(QPainter::SmoothPixmapTransform);
-qDebug()<<"deneme"<<endPoint;
-
-///painter.drawLine(lastPoint, endPoint);
-/************************************************************************************/
-/*
-    QPainterPath path;
-   /// path.moveTo(wpoints.at(0));
- QPointF pt1;
- QPointF pt2;
- QPainterPath path1;//= new QPainterPath();
- painter.setRenderHint(QPainter::Antialiasing, true);
- painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
- for (int i = 0; i < wpoints.count() - 1; i++) {
-     pt1 = getLineStart(wpoints[i], wpoints[i + 1]);
-     if (i == 0) {
-         path1.moveTo(pt1);
-     } else {
-         path1.quadTo(wpoints[i], pt1);
-     }
-     pt2 = getLineEnd(wpoints[i], wpoints[i + 1]);
-     path1.lineTo(pt2);
- }
- painter.drawPath(path1);
- /**************************************************************************************/
- /*int rad = (myPenSize / 2) + 2;
- update(QRect(lastPoint, endPoint).normalized()
-        .adjusted(-rad, -rad, +rad, +rad));
- lastPoint = endPoint;*/
 
 }
 
 
 MainWindow::~MainWindow()
 {
-    QStringList args3;
-    QProcess p3;
-    args3 << "-d" << "eta-disable-gestures@pardus.org.tr";
-    p3.execute("gnome-shell-extension-tool", args3);
 
-    QStringList args4;
-    QProcess p4;
-    args4 << "set" << "org.gnome.mutter" << "overlay-key" << "'SUPER_L'";
-    p4.execute("gsettings", args4);
+
 }

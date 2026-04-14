@@ -51,7 +51,7 @@ QMenu *MainWindow::ayarMenu()
 
    connect(saveProfileButton, &QPushButton::clicked, [=]() {
        FileCrud *fc=new FileCrud();
-       fc->dosya="e-tahta.ini";
+       fc->dosya=".config/e-tahta.ini";
 
        if(fc->fileexists()) fc->fileremove();
        fc->fileWrite("myPenAlpha="+QString::number(myPenAlpha));
@@ -73,7 +73,6 @@ QMenu *MainWindow::ayarMenu()
        fc->fileWrite("kutuLeft="+QString::number(kutuLeft));
        fc->fileWrite("kutuTop="+QString::number(kutuTop));
        fc->fileWrite("copyState="+QString::number(copyState));
-       fc->fileWrite("wsolVisible="+QString::number(wsolVisible));
 
 });
    QPushButton *loadDefaultProfileButton= new QPushButton;
@@ -105,7 +104,6 @@ QMenu *MainWindow::ayarMenu()
        kutuLeft=this->width()-kutuWidth-this->width()/100;
        kutuTop=(this->height() /2-kutuHeight/2);
        copyState=false;
-       wsolVisible=false;
 
 });
 
@@ -140,28 +138,6 @@ QMenu *MainWindow::ayarMenu()
        // qDebug()<<copyState;
 });
     layout->addWidget(checkbox,7,1,1,3,Qt::AlignLeft);
-
-    /**************************************************************/
-    QCheckBox *checkboxwsolVisible = new QCheckBox("Sol E-TAHTA Paneli Gizle", menu);
-  //  QFont ff( "Arial", 8, QFont::Normal);
-    checkboxwsolVisible->setFont(ff);
-    checkboxwsolVisible->setChecked(wsolVisible);
-    //qDebug()<<copyState;
-    connect(checkboxwsolVisible, &QCheckBox::clicked, [=]() {
-        wsolVisible=checkboxwsolVisible->checkState();
-        if(!wsolVisible) wsol->show();
-        else wsol->hide();
-
-       // qDebug()<<copyState;
-});
-    layout->addWidget(checkboxwsolVisible,8,1,1,3,Qt::AlignLeft);
-    /****************************************************************/
-   // layout->addWidget(new QLabel("<font size=1>Sayaç</font>"),6,3,1,1,Qt::AlignHCenter);
-
-  //  layout->addWidget(new QLabel("<font size=1>Kapat</font>"),8,1,1,1,Qt::AlignHCenter);
-
-
-  //  layout->setColumnStretch(6, 255);
 
     // add a widget action to the context menu
     auto wa = new QWidgetAction(this);

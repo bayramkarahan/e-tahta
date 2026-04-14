@@ -129,7 +129,7 @@ void MainWindow::initPen()
 
      myZeminType=0;
     FileCrud *fc=new FileCrud();
-    fc->dosya="e-tahta.ini";
+    fc->dosya=".config/e-tahta.ini";
    if((fc->fileexists()))
     {
         QString strmyPenAlpha=fc->fileSearch("myPenAlpha");strmyPenAlpha.chop(1);
@@ -231,7 +231,6 @@ void MainWindow::initPen()
         kutuTop=_strkutuTop.toInt();
         kutuLeft=_strkutuLeft.toInt();
         copyState=_strcopyState.toInt();
-        wsolVisible=_strwsolVisible.toInt();
 
         if (_strkutuLeft=="")
                 kutuLeft=screenSize.width()-kutuWidth-screenSize.width()/100;
@@ -272,7 +271,6 @@ else{
     kutuLeft=screenSize.width()-kutuWidth-screenSize.width()/100;
     kutuTop=(screenSize.height() /2-kutuHeight*0.53);
     copyState=false;
-    wsolVisible=false;
 }
    gizleGoster=true;
    screenDesktop=true;
@@ -532,23 +530,7 @@ void MainWindow::zamanlama()
 
 if(zamanlamastart!=0)
 {
-     /* QSize sSize = qApp->screens()[0]->size();
-      QGraphicsTextItem *text = new QGraphicsTextItem(".");
-      scene->addItem(text);
-      text->setPos(0, 0);
-      QGraphicsTextItem *text1 = new QGraphicsTextItem(".");
-      scene->addItem(text1);
-      text1->setPos(sSize.width()-2, sSize.height()-2);
-     //}
 
-      QPixmap pixmap(sSize.width(),sSize.height());
-      pixmap.fill(Qt::transparent);     // Start all pixels transparent
-      ///pixmap.fill(Qt::white);     // Start all pixels transparent
-      QPainter painter(&pixmap);
-      painter.setRenderHint(QPainter::Antialiasing);
-      scene->render(&painter); //scene.render
-      painter.setRenderHint(QPainter::Antialiasing, false);
-      painter.end();*/
     QPixmap pixMap = view->grab(view->sceneRect().toRect());
     pageList[sceneSayfaActiveNumber]->setIcon(QIcon(pixMap));////önemli
 }
@@ -556,28 +538,6 @@ zamanlamastart=1;
 }
 
 
-    //if(depo::historyNextCount>0) ileriAlButton->setEnabled(true);else ileriAlButton->setEnabled(false);
-
-
-   // qDebug() <<"zamanlama";
-  /*  int acikDosyaSayisi;
-    acikDosyaSayisi=0;
-
-    QStringList arguments;
-    arguments << "-c" << "ps -aux|grep '.odp\\|.otp\\|.pps\\|.ppsx\\|.ppt\\|.pptx\\|.pdf\\|vlc\\|wine'|wc -l";
-    QProcess process;
-    process.start("/bin/bash",arguments);
-    process.waitForFinished(-1); // will wait forever until finished
-    QString stdout = process.readAllStandardOutput();
-    // QString stderr = process.readAllStandardError();
-    // qDebug()<<stdout;
-    acikDosyaSayisi+=stdout.toInt();
-    if(screenDesktop==false) acikDosyaSayisi=5;
-       if(acikDosyaSayisi>2)
-       {
-           this->activateWindow();
-
-    }*/
 
 }
 

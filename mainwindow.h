@@ -239,7 +239,6 @@ private:
     int kutuLeft;
     int kutuTop;
     bool copyState;
-    bool wsolVisible;
 
        QVBoxLayout *kokLayot;
        QVBoxLayout *verticalLayout;
@@ -248,9 +247,6 @@ private:
        QWidget *buyukKutu;
        QWidget *pageListwg;
        QHBoxLayout *screenlayout;
-
-      // QWidget *kutu;
-       //QGroupBox *buyukKutu;
 
     void createToolBox();
     void createToolbars();
@@ -912,16 +908,7 @@ private:
         gridDikeyButton->hide();
         zeminMuzikButton->hide();
         zeminGuzelYaziButton->hide();
-        //sekilZeminRenkButton->hide();
-        //sekilKalemRenkButton->hide();
-        //ileriSayfaButton->hide();
-//        geriSayfaButton->hide();
-       // silSayfaButton->hide();
-       // ekleSayfaButton->hide();
-        //ileriAlButton->hide();
         geriAlButton->hide();
-      //  pageButton->hide();
-     //   pagePopButton->hide();
         copyButton->hide();
 
     }

@@ -1272,7 +1272,7 @@ void MainWindow::infoButtonClick(){
                    "\n\t* Kullanıcı Ayarlarını Kaydetme ve Açma Özelliği"
                    "\n\t* Sınavlar için Sayaç Özelliği"
                    "\n*****************************************************************************"
-                   "\n   Copyright (C) 2023 by Bayram KARAHAN                                    "
+                   "\n   Copyright (C) 2026 by Bayram KARAHAN                                    "
                    "\n\n\tkod.pardus.org.tr/karahan/e-tahta"
                    "\n\tgithub.com/bayramkarahan/E-Tahta"
                    "\n\tbayramkarahan.blogspot.com"
@@ -1293,7 +1293,7 @@ void MainWindow::infoButtonClick(){
                     "\n   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .          "
 
                    );
-    msgBox.setWindowTitle("E-Tahta 1.8.8");
+    msgBox.setWindowTitle("E-Tahta 1.9.0");
     QFont ff( "Arial", 10, QFont::Normal);
     msgBox.setFont(ff);
 
